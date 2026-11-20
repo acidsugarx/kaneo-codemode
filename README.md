@@ -6,6 +6,14 @@ Kaneo без MCP: агент пишет код против REST API (Bearer-к�
 
 Без хардкода инстанса: URL и ключ задаются при установке, хранятся в `~/.config/kaneo/`.
 
+## Install
+
+Вставь агенту одну строку — полную инструкцию он сам фетчит с GitHub:
+
+```text
+install kaneo-codemode — fetch and follow https://raw.githubusercontent.com/acidsugarx/kaneo-codemode/main/INSTALL.md ; ask me for the Kaneo instance URL and API key
+```
+
 ## Состав
 
 | Файл | Что |
@@ -13,13 +21,13 @@ Kaneo без MCP: агент пишет код против REST API (Bearer-к�
 | `sdk.mjs` | fetch-обёртка `k/get/post/patch/del` (Node 18+/Bun, без зависимостей) |
 | `SKILL.md` | скилл для агента: когда звать, паттерн, проверенные факты API |
 | `install.sh` | установка в скилл-каталоги harness'ов + конфиг + генерация endpoints.md + верификация |
-| `AGENT-PROMPT.md` | установка в любой harness одним промптом (RU/EN) |
+| `INSTALL.md` | полная инструкция для агента (RU/EN), фетчится по raw-URL |
 
 ## Установка
 
 ### Агентом (любой harness)
 
-Смотри `AGENT-PROMPT.md` — готовый промпт.
+Промпт выше, или скорми агенту напрямую содержимое `INSTALL.md` (raw: https://raw.githubusercontent.com/acidsugarx/kaneo-codemode/main/INSTALL.md).
 
 ### Руками
 
