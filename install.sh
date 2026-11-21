@@ -6,7 +6,9 @@
 set -euo pipefail
 
 B="${KANEO_API_URL:-}"
+[ -z "$B" ] && [ -f "$HOME/.config/kaneo/url" ] && B="$(tr -d '[:space:]' < "$HOME/.config/kaneo/url")"
 KEY="${KANEO_API_KEY:-}"
+[ -z "$KEY" ] && [ -f "$HOME/.config/kaneo/key" ] && KEY="$(tr -d '[:space:]' < "$HOME/.config/kaneo/key")"
 
 if [ -z "$B" ] || [ -z "$KEY" ]; then
   if [ -t 0 ]; then

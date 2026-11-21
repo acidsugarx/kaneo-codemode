@@ -30,6 +30,19 @@ const board = await get(`/task/tasks/${projects[0].id}`, { page: 1, limit: 50 })
 // board = { data: { name, columns: [{ id, slug, name, tasks: [...] }] }, pagination }
 ```
 
+### Progressive discovery — не читай весь индекс
+
+262 операции. Не знаешь точный эндпоинт — `api.search()`, потом `api.describe()` только для нужного:
+
+```js
+const { api, get, post } = await import(homedir() + "/.agents/skills/kaneo/sdk.mjs");
+await api.search("comment task");        // → "POST /comment/{taskId} — Create task comment [createTaskComment]"
+await api.describe("createTaskComment"); // → path/query/body с типами, enums, required
+await post(`/comment/${taskId}`, { content: "…" });
+```
+
+Спека OpenAPI кэшируется 24ч в `~/.cache/kaneo/openapi.json`; `{ refresh: true }` — принудительно обновить. `endpoints.md` — офлайн-дамп того же индекса.
+
 Harness with only bash: same endpoints via curl — `curl -sS "$(cat ~/.config/kaneo/url)/api/..." -H "Authorization: Bearer $(cat ~/.config/kaneo/key)"`.
 
 - omp JS eval: print via `console.log(...)` — `log()` is silent there.
